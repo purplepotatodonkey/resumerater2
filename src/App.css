@@ -36,3 +36,38 @@
     transform: rotate(360deg);
   }
 }
+
+.PDFDocument {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.PDFPage {
+  box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+  top: 5px;
+  bottom: 25px;
+  border: 4px solid gray;
+}
+
+.PDFPage > canvas {
+  max-width: 100%;
+  height: 100% !important;
+}
+
+.hoverbig {
+  width:100px;
+  height:100px;
+  opacity: 0.2;
+  border-radius: 10%;
+  background-color: lime;
+}
+
+.hoverbig:hover {
+  width:200px;
+  height:200px;
+  opacity: 0.4;
+  border-radius: 20%;
+  transition: all 150ms;
+  background-color: green;
+}
