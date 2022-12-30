@@ -65,6 +65,15 @@ app.use((req, res, next) => {
   }
   const stmt = db.prepare('SELECT * FROM RESUME_TABLE');
 
+  app.get('/get_top_three', (req,res) => {
+    console.log("Fetching top 3 resumes from db...");
+    const stmt = db.prepare('SELECT * FROM RESUME_TABLE ORDER BY rating DESC LIMIT 3');
+    stmt.all().forEach(({ id, rating, description }) => {
+      console.log(id, rating, description);
+    });
+    res.send(stmt.all());
+  });
+
   app.get('/db_get_all_resumes', (req,res) => {
     console.log("Fetching all resumes from db...");
     const stmt = db.prepare('SELECT * FROM RESUME_TABLE');
