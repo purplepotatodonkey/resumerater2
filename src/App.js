@@ -1,8 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 import React,{useEffect, useState} from 'react';
 import {Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
 import {Link} from "react-router-dom";
+import Navigation from './components/Navigation';
 
 // pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -183,13 +183,7 @@ function App() {
   return (
     <div className="App">
       <div style={{marginTop:"30px"}}></div>
-      <form action="http://139.177.207.245:5000/upload" method="post" encType="multipart/form-data">
-        <input type="file" onChange={handleFileChange} name="pdf" accept="application/pdf"></input>
-        <button type="submit">Upload PDF</button>
-      </form>
-      <Link to={'/AdminApp'}><button>Go To Admin Page</button></Link>
-      <br></br>
-      <button onClick={getRandomPDF}>{rateButtonText}</button>
+      <Navigation rateButtonText={rateButtonText} handleFileChange={handleFileChange} getRandomPDF={getRandomPDF}/>
       <br></br>
       <br></br>
       {pdfstr1 && <div style={{position:"fixed",top:"50px",left:"15%",width:"25%"}}>id: {pdfstr1.substring(36)}</div>}
